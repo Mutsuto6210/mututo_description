@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<robot name="hajimecart">
+  <link name="base_footprint"/>
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/hr56_cart_body.stl" />
+      </geometry>
+      <origin xyz="0 0 0.055" rpy="0 0 0"/>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/hr56_cart_body_col.stl" />
+      </geometry>
+      <origin xyz="0 0 0.055" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="1.65081"/>
+      <origin xyz="-8.0e-6 0 0.033177" rpy="0 0 0"/>
+      <inertia ixx="0.006051" iyy="0.00916" izz="0.009098" ixy="0" ixz="-1.0e-6" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="base_link" />
+  </joint>
+  <link name="right_wheel_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/wheel.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/wheel_col.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.376"/>
+      <origin xyz="0 -0.030687 0" rpy="0 0 0"/>
+      <inertia ixx="0.001305" iyy="0.0016" izz="0.001305" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="right_wheel_joint" type="continuous">
+    <origin xyz="0 -0.09 0.085" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="base_link"/>
+    <child link="right_wheel_link"/>
+  </joint>
+  <link name="left_wheel_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/wheel.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="3.141592654 0 0"/>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/wheel_col.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="3.141592654 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.376"/>
+      <origin xyz="0 0.030687 0" rpy="0 0 0"/>
+      <inertia ixx="0.001305" iyy="0.0016" izz="0.001305" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="left_wheel_joint" type="continuous">
+    <origin xyz="0 0.09 0.085" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="base_link"/>
+    <child link="left_wheel_link"/>
+  </joint>
+  <link name="right_caster_body_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/caster_body.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/caster_body_col.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.015"/>
+      <origin xyz="-0.00321 0 -0.008862" rpy="0 0 0"/>
+      <inertia ixx="3.0e-6" iyy="3.0e-6" izz="2.0e-6" ixy="0" ixz="1.0e-6" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="right_caster_body_joint" type="continuous">
+    <origin xyz="0.236 -0.118 0.05" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="right_caster_body_link"/>
+  </joint>
+  <link name="left_caster_body_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/caster_body.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/caster_body_col.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.015"/>
+      <origin xyz="-0.00321 0 -0.008862" rpy="0 0 0"/>
+      <inertia ixx="3.0e-6" iyy="3.0e-6" izz="2.0e-6" ixy="0" ixz="1.0e-6" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="left_caster_body_joint" type="continuous">
+    <origin xyz="0.236 0.118 0.05" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="left_caster_body_link"/>
+  </joint>
+  <link name="right_caster_wheel_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/caster_wheel.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/caster_wheel.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1.0e-6" iyy="1.0e-6" izz="1.0e-6" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="right_caster_wheel_joint" type="continuous">
+    <origin xyz="-0.011 0 -0.0296" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="right_caster_body_link"/>
+    <child link="right_caster_wheel_link"/>
+  </joint>
+  <link name="left_caster_wheel_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/caster_wheel.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/caster_wheel.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1.0e-6" iyy="1.0e-6" izz="1.0e-6" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="left_caster_wheel_joint" type="continuous">
+    <origin xyz="-0.011 0 -0.0296" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="left_caster_body_link"/>
+    <child link="left_caster_wheel_link"/>
+  </joint>
+  <link name="base_scan">
+    <visual>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/rplidar.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://hajimecart_description/meshes/rplidar_col.stl" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.218"/>
+      <origin xyz="0.01176 -0.000741 -0.020473" rpy="0 0 0"/>
+      <inertia ixx="0.000184" iyy="0.000296" izz="0.000234" ixy="-1.0e-6" ixz="-6.9e-5" iyz="1.0e-6"/>
+    </inertial>
+  </link>
+  <joint name="scan_joint" type="fixed">
+    <origin xyz="0.192 0 0.2306" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="base_scan"/>
+  </joint>
